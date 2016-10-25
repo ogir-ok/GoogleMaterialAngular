@@ -1,0 +1,7 @@
+uwsgi==2.0.14
+Django==1.10.2
+djangorestframework==3.5.1
+psycopg2==2.6.2
+
+google-api-python-client==1.5.4
+python-social-auth==0.2.21

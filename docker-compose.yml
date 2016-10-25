@@ -1,0 +1,19 @@
+version: '2'
+services:
+  db:
+    image: postgres
+  web:
+    build: .
+    environment:
+      - DJANGO_SETTINGS_MODULE=amail.settings
+    command: /bin/bash -c "cd /code/;
+        pip install -r requirements.txt;
+        yes yes | ./manage.py migrate;
+        uwsgi --http :8000 --module 'django.core.wsgi:get_wsgi_application()'  --processes 4 --threads 2 --py-autoreload 1 --static-map /static=/code/static"
+
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
