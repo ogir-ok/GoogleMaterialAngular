@@ -40,8 +40,10 @@ INSTALLED_APPS = [
 
     #thirdparty
     'social.apps.django_app.default',
+    'rest_framework',
 
     #our apps
+    'gmail'
 ]
 
 MIDDLEWARE = [
@@ -54,10 +56,24 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'amail.urls'
+ROOT_URLCONF = 'urls'
+
+GOOGLE_OAUTH2_CLIENT_ID = '965517327950-i82edkcfrgqp2ku2o44g3plc2s0ngjh2.apps.googleusercontent.com'
+GOOGLE_OAUTH2_CLIENT_SECRET = 'hXd-DmO5De0csv6mC0b7_ptA'
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '965517327950-i82edkcfrgqp2ku2o44g3plc2s0ngjh2.apps.googleusercontent.com'
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'hXd-DmO5De0csv6mC0b7_ptA'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = ['https://www.googleapis.com/auth/gmail.readonly']
+
+SOCIAL_AUTH_PIPELINE = (
+    'social.pipeline.social_auth.social_details',
+    'social.pipeline.social_auth.social_uid',
+    'social.pipeline.social_auth.social_user',
+    'social.pipeline.user.get_username',
+    'social.pipeline.user.create_user',
+    'gmail.pipeline.set_google_credentials'
+    # more pipelines
+)
 
 AUTHENTICATION_BACKENDS = (
     'social.backends.google.GoogleOAuth2',
@@ -79,7 +95,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'amail.wsgi.application'
+WSGI_APPLICATION = 'wsgi.application'
 
 
 # Database
@@ -133,4 +149,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
