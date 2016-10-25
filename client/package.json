@@ -1,0 +1,26 @@
+{
+  "name": "amail",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Angular Material",
+  "license": "MIT",
+  "dependencies": {
+    "angular": "^1.5.5",
+    "angular-animate": "^1.5.5",
+    "angular-aria": "^1.5.5",
+    "angular-messages": "^1.5.5",
+    "angular-mocks": ">=1.3 <1.6",
+    "angular-sanitize": ">=1.3 <1.6",
+    "angular-material": "^1.0.8"
+  },
+  "scripts": {
+    "prestart": "npm update"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-cli": "^1.2.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-sass": "^2.2.0",
+    "gulp-watch": "^4.3.5"
+  }
+}

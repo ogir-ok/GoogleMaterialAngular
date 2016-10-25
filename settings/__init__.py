@@ -61,6 +61,9 @@ ROOT_URLCONF = 'urls'
 GOOGLE_OAUTH2_CLIENT_ID = '965517327950-i82edkcfrgqp2ku2o44g3plc2s0ngjh2.apps.googleusercontent.com'
 GOOGLE_OAUTH2_CLIENT_SECRET = 'hXd-DmO5De0csv6mC0b7_ptA'
 
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/'
+SOCIAL_AUTH_USER_CREATED_REDIRECT_URL = '/'
+
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '965517327950-i82edkcfrgqp2ku2o44g3plc2s0ngjh2.apps.googleusercontent.com'
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'hXd-DmO5De0csv6mC0b7_ptA'
 SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = ['https://www.googleapis.com/auth/gmail.readonly']
@@ -68,11 +71,14 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = ['https://www.googleapis.com/auth/gmail.readon
 SOCIAL_AUTH_PIPELINE = (
     'social.pipeline.social_auth.social_details',
     'social.pipeline.social_auth.social_uid',
+    'social.pipeline.social_auth.auth_allowed',
     'social.pipeline.social_auth.social_user',
     'social.pipeline.user.get_username',
     'social.pipeline.user.create_user',
-    'gmail.pipeline.set_google_credentials'
-    # more pipelines
+    'social.pipeline.social_auth.associate_user',
+    'social.pipeline.social_auth.load_extra_data',
+    'social.pipeline.user.user_details',
+    'gmail.pipeline.set_google_credentials',
 )
 
 AUTHENTICATION_BACKENDS = (
@@ -82,7 +88,7 @@ AUTHENTICATION_BACKENDS = (
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates',],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

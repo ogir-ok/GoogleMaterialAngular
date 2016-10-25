@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/static/js/script.js"></script>
+    <link href="/static/css/styles.css" rel="stylesheet" type="text/css"></link>
+</head>
+<body ng-app="app">
+<md-toolbar class="md-theme-light" layout="row">
+    <md-button ng-controller="NavCtrl" ng-click="toggle()">MENU</md-button>
+
+    <h2 class="md-toolbar-tools">
+        <span>Angular Email</span>
+    </h2>
+</md-toolbar>
+
+ <md-sidenav class="md-sidenav md-whiteframe-4dp" md-component-id="nav">
+      <md-toolbar class="md-theme-light">
+        <h1 class="md-toolbar-tools">Menu</h1>
+      </md-toolbar>
+      <md-content ng-controller="NavCtrl" layout-padding>
+        <md-list>
+          {% if user.is_authenticated %}
+              <md-list-item href="/logout/" class="md-raised md-warn">Log Out</md-list-item>
+          {%  else %}
+              <md-list-item href="/login/google-oauth2/" class="md-raised md-warn">Log In</md-list-item>
+          {% endif %}
+        </md-list>
+      </md-content>
+
+    </md-sidenav>
+
+<div layout="row" layout-align="center" class="page">
+    {% block content %}
+
+    {% endblock content %}
+</div>
+
+</body>
+</html>

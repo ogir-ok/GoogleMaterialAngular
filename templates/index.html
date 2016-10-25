@@ -1,0 +1,28 @@
+{% extends "base.html"  %}
+{% block content %}
+{% verbatim %}
+
+<div layout="row" layout-align="center" class="page" ng-controller="emailsController">
+    <md-progress-circular ng-show="emails === null"  md-mode="indeterminate" ></md-progress-circular>
+    <h2 ng-show="emails !== null && !emails.length"> No emails </h2>
+    <div class="flexbox-parent" style="max-width: 1000px; padding: 15px; margin: 5px">
+        <div ng-repeat="date_emails in emails">
+            <h4>{{ date_emails.date }}</h4>
+            <md-card >
+                <md-list flex>
+                    <md-list-item class="md-3-line" ng-repeat="email in date_emails.emails" ng-click="null">
+                        <img ng-src="http://s31.postimg.org/cq2pz5z23/hamster.jpg" class="md-avatar" alt="{{email.who}}">
+                        <div class="md-list-item-text">
+                            <h3>{{ email.From }}</h3>
+                            <h4>{{ email.Subject }}</h4>
+                        </div>
+                        <md-divider md-inset ng-if="!$last"></md-divider>
+                    </md-list-item>
+                </md-list>
+            </md-card>
+        </div>
+    </div>
+</div>
+
+{% endverbatim %}
+{% endblock %}
