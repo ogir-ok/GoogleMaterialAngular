@@ -56,8 +56,8 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'amail.urls'
 
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '642629076244-de648moseu6djbdrlrmqrt6dm9richup.apps.googleusercontent.com'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'IF4B3xI88DzRtHuxsr4cL5G0'
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '965517327950-i82edkcfrgqp2ku2o44g3plc2s0ngjh2.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'hXd-DmO5De0csv6mC0b7_ptA'
 
 AUTHENTICATION_BACKENDS = (
     'social.backends.google.GoogleOAuth2',
