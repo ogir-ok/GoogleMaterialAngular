@@ -10,6 +10,8 @@ services:
     command: /bin/bash -c "cd /code/;
       pip install -r requirements.txt;
       yes yes | ./manage.py collectstatic;
+      sleep 5;
+      sh /code/wait_postgres.sh;
       yes yes | ./manage.py migrate;
       uwsgi --http :8000 --module 'django.core.wsgi:get_wsgi_application()'  --processes 4 --threads 2 --py-autoreload 1 --static-map /static=/code/static"
     volumes:
