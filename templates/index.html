@@ -4,7 +4,12 @@
 
 <div layout="row" layout-align="center" class="page" ng-controller="emailsController">
     <md-progress-circular ng-show="emails === null"  md-mode="indeterminate" ></md-progress-circular>
-    <h2 ng-show="emails !== null && !emails.length"> No emails </h2>
+    <md-toolbar class="md-warn" ng-show="error">
+        <div class="md-toolbar-tools">
+            <h2 class="md-flex">{{ error }}</h2>
+        </div>
+    </md-toolbar>
+    <h2 ng-show="emails !== null && !error && !emails.length"> No emails </h2>
     <div class="flexbox-parent" style="max-width: 1000px; padding: 15px; margin: 5px">
         <div ng-repeat="date_emails in emails">
             <h4>{{ date_emails.date }}</h4>

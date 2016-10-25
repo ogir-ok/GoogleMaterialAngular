@@ -6,6 +6,9 @@ from .models import GoogleCredentials
 
 
 def set_google_credentials(strategy, details, response, user=None, *args, **kwargs):
+    """
+    Saves google credentials to work with API
+    """
     if user:
         token_expiry = datetime.datetime.utcnow() + datetime.timedelta(seconds=int(response.get('expires_in')))
         id_token = _extract_id_token(response.get('id_token'))
