@@ -4,6 +4,7 @@ from collections import defaultdict
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
 
 from apiclient import discovery
 
@@ -12,6 +13,7 @@ class EmailList(APIView):
     """
     List all emails of user.
     """
+    permission_classes = (IsAuthenticated,)
 
     def get(self, request, format=None):
         credentials = request.user.google_credential.credential

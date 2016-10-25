@@ -16,10 +16,10 @@
 </md-toolbar>
 
  <md-sidenav class="md-sidenav md-whiteframe-4dp" md-component-id="nav">
-      <md-toolbar class="md-theme-light">
+      <md-toolbar class="md-theme-light" ng-controller="NavCtrl" ng-click="toggle()">
         <h1 class="md-toolbar-tools">Menu</h1>
       </md-toolbar>
-      <md-content ng-controller="NavCtrl" layout-padding>
+      <md-content layout-padding>
         <md-list>
           {% if user.is_authenticated %}
               <md-list-item href="/logout/" class="md-raised md-warn">Log Out</md-list-item>
